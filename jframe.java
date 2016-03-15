@@ -1,10 +1,11 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-class myframe
+class myframe implements ActionListener
 {
 	int arr1[] = {1,2,3,4};
 	int arr2[] = {5,6,7,8};
+	int i =1;
 	JFrame j;
 	JLabel l;
 	JRadioButton b1,b2;
@@ -14,12 +15,12 @@ class myframe
 		j = new JFrame("New Frame");
 		j.setSize(850,750);
 		j.setLayout(null);
-		Icon i = new ImageIcon(arr1[0]+".jpg");
+		Icon i = new ImageIcon(arr1[1]+".jpg");
 		l = new JLabel(i);
 		l.setBounds(100,50,700,500);
-		b2 = new JRadioButton("Emma",true);
+		b2 = new JRadioButton("Emma");
 		b2.setBounds(30,10,80,20);
-		b1= new JRadioButton("Shirley");
+		b1= new JRadioButton("Shirley",true);
 		b1.setBounds(30,30,80,40);
 		ButtonGroup group = new ButtonGroup();
         		group.add(b1);
@@ -39,10 +40,22 @@ class myframe
 		j.add(b);
 		j.add(c);
 		j.add(d);
+		a.addActionListener(this);
 		j.setVisible(true);
 	}
 	public static void main(String arg[])
 	{
 		new myframe();
+	}
+	public void actionPerformed(ActionEvent e)
+	{
+		if(e.getActionCommand().equals("First"))
+		{
+		System.out.println("hi i am in the actionPerformed loop");
+		Icon i1 = new ImageIcon(arr1[0]+".jpg");
+		//l = new JLabel(i);
+		//l.setBounds(100,50,700,500);
+		l.setIcon(i1);
+		}
 	}
 }
